@@ -5,6 +5,7 @@
 #include <string.h>
 #include <algorithm>
 
+//Usa o conceito de algoritmos gulosos para resolver o problema da mochila
 using namespace std;
 using std::vector;
 
