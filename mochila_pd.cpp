@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//Programacao dinamica para resolver o problema da mochila
+
 using namespace std;
 using std::vector;
 
@@ -20,6 +22,7 @@ typedef struct{
 
 vector<Item> v;
 
+//ler o txt com as instancias do problema
 void ler_entrada(Item *I,Mochila *M, char *nome){
 	
 		int i,j,k;
@@ -35,6 +38,7 @@ void ler_entrada(Item *I,Mochila *M, char *nome){
 }
 
 void alg_mochila(Item *I, Mochila *M){
+	//valora com o valor 0 cada posicao da matriz
 	int m[I->qnt_itens+1][M->capacidade_mochila+1],k,j,s,w;
 	for(j = 0; j <= I->qnt_itens; j++){
 		for(k = 0; k <= M->capacidade_mochila; k++){
@@ -42,7 +46,7 @@ void alg_mochila(Item *I, Mochila *M){
 				
 		}
 	}
-								
+	//metodo principal que usa programacao dinamica							
 	for(s = 1; s <= I->qnt_itens; s++){
 		for(w = 1; w <= M->capacidade_mochila; w++){
 			if(v[s-1].peso <= w){
@@ -58,6 +62,7 @@ void alg_mochila(Item *I, Mochila *M){
 	int z = I->qnt_itens;
 	int n = M->capacidade_mochila;
 	
+	//mostra quais itens foram escolhidos para entrar na mochila
 	while(I->qnt_itens > 0){
 		if (m[I->qnt_itens][M->capacidade_mochila] != m[I->qnt_itens-1][M->capacidade_mochila]){
 			M->itens.push_back(v[I->qnt_itens-1]);
